@@ -21,7 +21,8 @@ public class FileManager {
     public LinkedList<Movie> loadCollection(String filePath) {
         LinkedList<Movie> collection = new LinkedList<Movie>();
         if (!setFile(filePath)) return null;
-        else try (BufferedReader bufferedReader = new BufferedReader(new FileReader(collectionFile))) {
+        else try ( InputStreamReader fr = new InputStreamReader(new FileInputStream(collectionFile), "UTF-8")) {
+            BufferedReader bufferedReader = new BufferedReader(fr);
             Gson gson = new Gson();
             System.out.println("Загрузка коллекции из файла " + collectionFile.getAbsolutePath());
             StringBuilder stringBuilder = new StringBuilder();
@@ -112,8 +113,8 @@ public class FileManager {
         } else if (!collectionFile.canRead() || !collectionFile.canWrite()) {
             System.out.println("Невозможно сохранить файл. Файл защищён от чтения и(или) записи.");
         } else {
-            try (FileWriter fileWriter = new FileWriter(collectionFile)) {
-                fileWriter.write(gson.toJson(collection));
+            try (OutputStream fileWriter = new FileOutputStream(collectionFile)) {
+                fileWriter.write(gson.toJson(collection).getBytes(),0, gson.toJson(collection).length());
                 fileWriter.flush();
                 System.out.println("Файл успешно сохранён.");
                 return true;
