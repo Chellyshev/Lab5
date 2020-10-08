@@ -4,16 +4,16 @@ import lab.CollectionControl;
 import lab.worker.Response;
 import lab.worker.Task;
 
-public class CommandGroup implements Command {
+public class CommandExecutorClear implements CommandExecutor {
     @Override
     public Response executeTask(CollectionControl collectionControl, Task task) {
         String msg;
         if (collectionControl.getCollection().size() == 0) {
             msg = "Коллекция пуста";
         } else {
-            msg = "";
+            collectionControl.getCollection().clear();
+            msg = "Коллекция очищена";
         }
         return new Response(msg);
     }
 }
-

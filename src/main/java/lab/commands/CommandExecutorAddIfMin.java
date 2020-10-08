@@ -2,15 +2,10 @@ package lab.commands;
 
 import lab.CollectionControl;
 import lab.collection.Movie;
-import lab.collection.MovieGenre;
 import lab.worker.Response;
 import lab.worker.Task;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.stream.Collectors;
-
-public class CommandAddIfMin implements Command {
+public class CommandExecutorAddIfMin implements CommandExecutor {
 
 
     @Override

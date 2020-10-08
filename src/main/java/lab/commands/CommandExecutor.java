@@ -7,7 +7,7 @@ import lab.worker.Task;
 /**
  * Интерфейс обработчика команды.
  */
-public interface Command {
+public interface CommandExecutor {
     Response executeTask(CollectionControl collectionControl, Task task);
 
 }

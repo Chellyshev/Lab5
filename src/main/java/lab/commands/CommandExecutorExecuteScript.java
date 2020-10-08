@@ -7,10 +7,10 @@ import lab.worker.TaskWorker;
 
 import java.util.ArrayList;
 
-public class CommandExecuteScript implements Command {
+public class CommandExecutorExecuteScript implements CommandExecutor {
     TaskWorker taskWorker;
 
-    public CommandExecuteScript(TaskWorker taskWorker) {
+    public CommandExecutorExecuteScript(TaskWorker taskWorker) {
         this.taskWorker = taskWorker;
     }
 

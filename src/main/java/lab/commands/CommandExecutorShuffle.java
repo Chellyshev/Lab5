@@ -5,7 +5,7 @@ import lab.worker.Task;
 
 import java.util.Collections;
 
-public class CommandShuffle implements Command {
+public class CommandExecutorShuffle implements CommandExecutor {
     @Override
     public Response executeTask(CollectionControl collectionControl, Task task) {
 

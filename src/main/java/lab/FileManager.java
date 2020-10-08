@@ -53,6 +53,7 @@ public class FileManager {
             System.out.println("Коллекций успешно загружена. Добавлено " + collection.size() + " элементов.");
         } catch (IOException e) {
             System.out.println("При чтении строк возникла ошибка");
+
             return null;
         }
         return collection;

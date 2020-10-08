@@ -12,32 +12,8 @@ import java.util.ArrayList;
  * Класс, работающий с командами из консоли.
  */
 public class TaskManager {
-    private static final int HISTORY_SIZE = 7;
-    private final String[] taskHistory = new String[HISTORY_SIZE];
     Gson gson = new Gson();
 
-    /**
-     * Обновляет исхорию команд пользователя.
-     *
-     * @param newElement Команда, которую нужно добавить в историю.
-     */
-    private void updateHistory(String newElement) {
-        for (int i = HISTORY_SIZE - 1; i >= 1; i--) {
-            taskHistory[i] = taskHistory[i - 1];
-        }
-        taskHistory[0] = newElement;
-    }
-
-    /**
-     * Выводит историю команд пользователя.
-     */
-    private void getHistory() {
-        System.out.println("История запросов:");
-        for (String element : taskHistory) {
-            if (element != null)
-                System.out.println(element);
-        }
-    }
 
     /**
      * Расшифровыывет команду пользователя и формирует задание.
@@ -48,7 +24,6 @@ public class TaskManager {
     public Task getTask(String stringTask, boolean isScriptCommand) {
         Task task = null;
         String command = stringTask.trim().split(" ", 2)[0];
-        updateHistory(command);
         try {
             switch (command) {
                 case "help":

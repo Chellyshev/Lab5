@@ -1,9 +1,6 @@
 package lab.worker;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Stack;
 
@@ -48,7 +45,8 @@ public class ScriptReader {
     public ArrayList<Task> read(String filePath) {
         ArrayList<Task> taskList = new ArrayList<>();
         File script = checkFile(filePath);
-        try (BufferedReader scriptReader = new BufferedReader(new FileReader(script))) {
+        try (InputStreamReader scriptReader1 = new InputStreamReader(new FileInputStream(filePath), "UTF-8")) {
+            BufferedReader scriptReader = new BufferedReader(scriptReader1);
             System.out.println("Анализ файла " + script.getAbsolutePath());
             String scriptCommand = scriptReader.readLine();
             while (scriptCommand != null) {

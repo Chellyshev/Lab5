@@ -5,7 +5,7 @@ import lab.collection.Movie;
 import lab.worker.Response;
 import lab.worker.Task;
 
-public class CommandAdd implements Command {
+public class CommandExecutorAdd implements CommandExecutor {
     @Override
     public Response executeTask(CollectionControl collectionControl, Task task) {
         String msg;
